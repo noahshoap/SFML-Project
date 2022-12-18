@@ -10,8 +10,14 @@ set(CMAKE_CXX_FLAGS "-Wall -Werror -Wextra -O3")
 # Specify output path to bin directory
 set(EXECUTABLE_OUTPUT_PATH "bin")
 
-# TODO: Find and link SFML
+# Find SFML
+find_package(SFML 2.5 COMPONENTS
+    system window graphics network audio REQUIRED)
 
+# Create game executable
 add_executable(game
     src/main.cpp
 )
+
+# Link SFML to executable
+target_link_libraries(game sfml-graphics)
