@@ -1,6 +1,6 @@
 #include "MenuState.hpp"
 
-MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w) : State(w) {
+MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetManager> a) : State(w, a) {
 
 }
 

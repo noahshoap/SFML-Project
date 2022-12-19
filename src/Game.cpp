@@ -5,13 +5,14 @@ Game::Game() {
     height = 600;
     title = "Game Engine";
     window = std::make_shared<sf::RenderWindow>(sf::VideoMode(width, height), title);
+    assets = std::make_shared<AssetManager>();
 }
 
 void Game::run() {
     sf::Event event;
 
     // Create menu state to start game.
-    state_manager.addState(std::make_unique<MenuState>(window));
+    state_manager.addState(std::make_unique<MenuState>(window, assets));
 
     while (window->isOpen()) {
         while (window->pollEvent(event)) if (event.type == sf::Event::Closed) window->close();

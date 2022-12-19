@@ -5,7 +5,7 @@
 
 class MenuState : public State {
 public:
-    MenuState( std::shared_ptr<sf::RenderWindow>);
+    MenuState( std::shared_ptr<sf::RenderWindow>, std::shared_ptr<AssetManager>);
     ~MenuState();
     void draw(const float&) final override;
     void handleInput() final override;
