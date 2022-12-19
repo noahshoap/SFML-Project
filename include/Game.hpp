@@ -16,7 +16,7 @@ public:
     void run();
 protected:
     StateManager state_manager;
-    std::unique_ptr<sf::RenderWindow> window;
+    std::shared_ptr<sf::RenderWindow> window;
     unsigned int width;
     unsigned int height;
     std::string title;

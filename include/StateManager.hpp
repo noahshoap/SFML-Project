@@ -12,6 +12,7 @@ public:
     State& getState();
     void removeState();
     void replaceState(std::unique_ptr<State>);
+    bool empty();
 private:
     std::stack<std::unique_ptr<State>> states;
 };

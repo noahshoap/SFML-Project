@@ -17,3 +17,7 @@ void StateManager::replaceState(std::unique_ptr<State> state) {
     removeState();
     states.push(std::move(state));
 }
+
+bool StateManager::empty() {
+    return states.empty();
+}
