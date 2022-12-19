@@ -9,6 +9,7 @@
 
 // User includes.
 #include "StateManager.hpp"
+#include "MenuState.hpp"
 
 class Game {
 public:

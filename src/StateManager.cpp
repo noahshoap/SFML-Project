@@ -1,21 +1,23 @@
 #include "StateManager.hpp"
 
-void StateManager::addState(std::unique_ptr<State> state) {
+void StateManager::addState(std::shared_ptr<State> state) {
     // Push state onto stack
-    states.push(std::move(state));
+    states.push(state);
 }
 
-State& StateManager::getState() {
-    return *(states.top());
+std::shared_ptr<State> StateManager::getState() {
+    if (states.empty()) return nullptr;
+
+    return states.top();
 }
 
 void StateManager::removeState() {
     states.pop();
 }
 
-void StateManager::replaceState(std::unique_ptr<State> state) {
+void StateManager::replaceState(std::shared_ptr<State> state) {
     removeState();
-    states.push(std::move(state));
+    states.push(state);
 }
 
 bool StateManager::empty() {

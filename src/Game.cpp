@@ -11,19 +11,19 @@ void Game::run() {
     sf::Event event;
 
     // Create menu state to start game.
-    states.addState(std::make_unique<MenuState>(window));
+    state_manager.addState(std::make_unique<MenuState>(window));
 
     while (window->isOpen()) {
         while (window->pollEvent(event)) if (event.type == sf::Event::Closed) window->close();
 
         // Close game if no state to process.
-        if (states.empty()) break;
-
-        auto state = states.getState();
+        if (state_manager.empty()) break;
+        auto state = state_manager.getState();
 
         window->clear(sf::Color::Black);
-        state.
-
+        state->handleInput();
+        state->update(1);
+        state->draw(1);
         window->display();
     }
 
