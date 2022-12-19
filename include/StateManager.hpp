@@ -9,7 +9,7 @@
 class StateManager {
 public:
     void addState(std::unique_ptr<State>);
-    std::unique_ptr<State> getState();
+    State& getState();
     void removeState();
     void replaceState(std::unique_ptr<State>);
 private:
