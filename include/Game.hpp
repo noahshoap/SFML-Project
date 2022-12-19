@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 
 // User includes.
+#include "AssetManager.hpp"
 #include "StateManager.hpp"
 #include "MenuState.hpp"
 

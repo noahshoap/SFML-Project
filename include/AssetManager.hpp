@@ -5,6 +5,7 @@
 #include <map>
 #include <memory>
 #include <string>
+#include <stdexcept>
 
 // SFML Includes
 #include <SFML/Audio.hpp>
@@ -13,6 +14,7 @@
 
 class AssetManager {
 public:
+    AssetManager(const std::string& tex_path = "textures/", const std::string& font_path = "fonts/", const std::string& sound_path = "sounds/");
     /* Methods to get an already loaded asset */
     std::shared_ptr<sf::Texture> getTexture(const std::string&);
     std::shared_ptr<sf::Font> getFont(const std::string&);
@@ -32,6 +34,11 @@ private:
     std::map<std::string, std::shared_ptr<sf::Texture>> textures;
     std::map<std::string, std::shared_ptr<sf::Font>> fonts;
     std::map<std::string, std::shared_ptr<sf::SoundBuffer>> sounds;
+
+    /* Paths to look for files in */
+    std::string texture_path;
+    std::string font_path;
+    std::string sound_path;
 };
 
 #endif /* ASSET_MANAGER_HPP */
