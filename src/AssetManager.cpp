@@ -75,7 +75,20 @@ std::shared_ptr<sf::Font> AssetManager::loadFont(const std::string& font_name) {
 }
 
 std::shared_ptr<sf::SoundBuffer> AssetManager::loadSoundBuffer(const std::string& sound_name) {
-    (void) sound_name;
+    auto map_rv = sounds.find(sound_name);
+
+    // Sound has already been loaded, return it.
+    if (map_rv != sounds.end()) return map_rv->second;
+
+    // Otherwise, create new sound buffer.
+    auto sound = std::make_shared<sf::SoundBuffer>();
+    if (!sound->loadFromFile(sound_path + sound_name))throw std::runtime_error("Failed to load sound: " + sound_name);
+
+    // Insert it into the map keyed off the file name passed in.
+    sounds[sound_name] = sound;
+
+    // Assume the user is using this as a getSound() call, return the sound.
+    return sound;
 }
 
 

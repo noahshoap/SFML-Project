@@ -27,4 +27,4 @@ add_executable(game
 )
 
 # Link SFML to executable
-target_link_libraries(game sfml-graphics sfml-window)
+target_link_libraries(game sfml-graphics sfml-window sfml-audio)
