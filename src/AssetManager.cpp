@@ -48,11 +48,30 @@ std::shared_ptr<sf::Texture> AssetManager::loadTexture(const std::string& tex_na
 
     // Otherwise, create a new texture.
     auto texture = std::make_shared<sf::Texture>();
-    texture->loadFromFile(tex_name);
+    if (!texture->loadFromFile(texture_path + tex_name)) throw std::runtime_error("Failed to load texture: " + tex_name);
+
+    // Insert it into the map keyed off the file name passed in.
+    textures[tex_name] = texture;
+
+    // Assume the user is using this as a getTexture() call as well, and return the texture created.
+    return texture;
 }
 
 std::shared_ptr<sf::Font> AssetManager::loadFont(const std::string& font_name) {
-    (void) font_name;
+    auto map_rv = fonts.find(font_name);
+
+    // Font has already been loaded, return it.
+    if (map_rv != fonts.end()) return map_rv->second;
+
+    // Otherwise, create a new font.
+    auto font = std::make_shared<sf::Font>();
+    if (!font->loadFromFile(font_path + font_name)) throw std::runtime_error("Failed to load font: " + font_name);
+
+    // Insert it into the map keyed off the file name passed in.
+    fonts[font_name] = font;
+
+    // Assume the user is using this as a getFont() call, return the font.
+    return font;
 }
 
 std::shared_ptr<sf::SoundBuffer> AssetManager::loadSoundBuffer(const std::string& sound_name) {
