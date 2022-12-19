@@ -19,6 +19,8 @@ find_package(SFML 2.5 COMPONENTS
 
 # Create game executable
 add_executable(game
+    src/State.cpp
+    src/StateManager.cpp
     src/Game.cpp
     src/main.cpp
 )
