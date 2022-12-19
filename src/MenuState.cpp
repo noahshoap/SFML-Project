@@ -6,12 +6,11 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetM
 
 void MenuState::draw(const float& dt) {
     (void) dt;
-    sf::Font font;
 
-    if (!font.loadFromFile("Arial.ttf")) return;
+    auto font = assets->loadFont("Arial.ttf");
 
     sf::Text text;
-    text.setFont(font);
+    text.setFont(*font);
     text.setString("Hello, world!");
     text.setCharacterSize(24);
     text.setFillColor(sf::Color::Green);
