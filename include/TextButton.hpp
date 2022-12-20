@@ -3,11 +3,11 @@
 
 class TextButton : public Button {
 public:
-    TextButton();
-    TextButton(const sf::Vector2f&);
-    TextButton(const sf::Vector2f&, const sf::Vector2f&);
-    TextButton(const sf::Vector2f&, const sf::Vector2f&, const sf::Color&);
-    TextButton(const sf::Vector2f&, const sf::Vector2f&, const sf::Color&, const std::string&);
+    TextButton(std::shared_ptr<AssetManager>);
+    TextButton(std::shared_ptr<AssetManager>, const sf::Vector2f&);
+    TextButton(std::shared_ptr<AssetManager>, const sf::Vector2f&, const sf::Vector2f&);
+    TextButton(std::shared_ptr<AssetManager>, const sf::Vector2f&, const sf::Vector2f&, const sf::Color&);
+    TextButton(std::shared_ptr<AssetManager>, const sf::Vector2f&, const sf::Vector2f&, const sf::Color&, const std::string&);
     void setText(const std::string&, const std::string& = "Arial");
     virtual void clicked() final override;
     virtual void draw(sf::RenderTarget&, sf::RenderStates) final override;

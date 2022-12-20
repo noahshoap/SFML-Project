@@ -1,25 +1,25 @@
 #include "Button.hpp"
 
-Button::Button() 
-: background()
+Button::Button(std::shared_ptr<AssetManager> a) 
+: assets(a), background()
 {
 
 }
 
-Button::Button(const sf::Vector2f& size) 
-: background(size)
+Button::Button(std::shared_ptr<AssetManager> a, const sf::Vector2f& size) 
+: assets(a), background(size)
 {
 
 }
 
-Button::Button(const sf::Vector2f& size, const sf::Vector2f& position) 
-: background(size)
+Button::Button(std::shared_ptr<AssetManager> a, const sf::Vector2f& size, const sf::Vector2f& position) 
+: assets(a), background(size)
 {
     background.setPosition(position);
 }
 
-Button::Button(const sf::Vector2f& size, const sf::Vector2f& position, const sf::Color& color)
-: background(size)
+Button::Button(std::shared_ptr<AssetManager> a, const sf::Vector2f& size, const sf::Vector2f& position, const sf::Color& color)
+: assets(a), background(size)
 {
     background.setPosition(position);
     background.setFillColor(color);
