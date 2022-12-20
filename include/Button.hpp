@@ -16,7 +16,7 @@ public:
     Button(std::shared_ptr<AssetManager>, const sf::Vector2f&, const sf::Vector2f&, const sf::Color&);
     virtual void clicked() = 0;
     virtual void draw(sf::RenderTarget&, sf::RenderStates) const = 0;
-    virtual bool withinBounds(const sf::Vector2f&);
+    virtual bool withinBounds(const sf::Vector2i&);
 protected:
     std::shared_ptr<AssetManager> assets;
     sf::RectangleShape background;

@@ -9,13 +9,11 @@ Game::Game() {
 }
 
 void Game::run() {
-    sf::Event event;
 
     // Create menu state to start game.
     state_manager.addState(std::make_unique<MenuState>(window, assets));
 
     while (window->isOpen()) {
-        while (window->pollEvent(event)) if (event.type == sf::Event::Closed) window->close();
 
         // Close game if no state to process.
         if (state_manager.empty()) break;

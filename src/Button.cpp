@@ -25,18 +25,19 @@ Button::Button(std::shared_ptr<AssetManager> a, const sf::Vector2f& size, const 
     background.setFillColor(color);
 }
 
-bool Button::withinBounds(const sf::Vector2f& mouse) {
+bool Button::withinBounds(const sf::Vector2i& mouse) {
     auto position = background.getPosition();
     auto size = background.getSize();
 
     auto position_max = position;
     position_max.x += size.x;
-    position.y += size.y;
+    position_max.y += size.y;
 
     if (mouse.x < position.x) return false;
     if (mouse.x > position_max.x) return false;
     if (mouse.y < position.y) return false;
     if (mouse.y > position_max.y) return false;
 
+    this->clicked();
     return true;
 }

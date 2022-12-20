@@ -3,6 +3,7 @@
 
 #include "State.hpp"
 #include "TextButton.hpp"
+#include <vector>
 
 class MenuState : public State {
 public:
@@ -11,6 +12,8 @@ public:
     void draw(const float&) final override;
     void handleInput() final override;
     void update(const float&) final override;
+protected:
+    std::vector<std::shared_ptr<Button>> buttons;
 };
 
 #endif /* MENU_STATE_HPP */
