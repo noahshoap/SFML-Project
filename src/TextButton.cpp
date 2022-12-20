@@ -40,7 +40,6 @@ void TextButton::setText(const std::string& txt, const std::string& fnt) {
     position.y += rect_size.y;
 
     text.setPosition(position);
-    printf("{%f,%f}\n", bounds.width, bounds.height);
 
 }
 

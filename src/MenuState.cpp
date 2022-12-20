@@ -24,8 +24,7 @@ void MenuState::handleInput() {
         if (event.type == sf::Event::Closed) window->close();
         if (event.type == sf::Event::MouseButtonPressed) {
             for (const auto& button : buttons) {
-                if (button->withinBounds(sf::Mouse::getPosition(*window))) {
-                }
+                if (button->withinBounds(sf::Mouse::getPosition(*window))) {}
             }
         }
     }
