@@ -1,6 +1,8 @@
 #ifndef BUTTON_HPP
 #define BUTTON_HPP
 
+#include <memory>
+#include <string>
 #include <SFML/Graphics.hpp>
 
 class Button : public sf::Drawable {
