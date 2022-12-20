@@ -7,14 +7,9 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetM
 void MenuState::draw(const float& dt) {
     (void) dt;
 
-    auto font = assets->loadFont("Arial.ttf");
+    TextButton button(assets, sf::Vector2f(200, 100), sf::Vector2f(300, 250), sf::Color::Green, "Hello!");
 
-    sf::Text text;
-    text.setFont(*font);
-    text.setString("Hello, world!");
-    text.setCharacterSize(24);
-    text.setFillColor(sf::Color::Green);
-    window->draw(text);
+    window->draw(button);
 }
 
 void MenuState::handleInput() {

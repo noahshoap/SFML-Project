@@ -2,6 +2,7 @@
 #define MENU_STATE_HPP
 
 #include "State.hpp"
+#include "TextButton.hpp"
 
 class MenuState : public State {
 public:
