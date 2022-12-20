@@ -21,6 +21,7 @@ find_package(SFML 2.5 COMPONENTS
 add_executable(game
     src/AssetManager.cpp
     src/Button.cpp
+    src/TextButton.cpp
     src/MenuState.cpp
     src/StateManager.cpp
     src/Game.cpp
