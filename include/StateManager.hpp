@@ -4,7 +4,7 @@
 #include <stack>
 #include <memory>
 
-#include "State.hpp"
+class State;
 
 class StateManager {
 public:

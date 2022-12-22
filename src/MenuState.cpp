@@ -1,19 +1,15 @@
 #include "MenuState.hpp"
 
 MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetManager> a, std::shared_ptr<StateManager> sm) : State(w, a, sm) {
-    auto button = std::make_shared<TextButton>(assets, sf::Vector2f(200, 100), sf::Vector2f(300, 250), sf::Color::Green, "Play");
-    auto exit_button = std::make_shared<TextButton>(assets, sf::Vector2f(200, 100), sf::Vector2f(300, 360), sf::Color::Red, "Exit");
-
-    buttons.push_back(button);
-    buttons.push_back(exit_button);
+    play = std::make_shared<TextButton>(assets, sf::Vector2f(200, 100), sf::Vector2f(300, 250), sf::Color::Green, "Play");
+    quit = std::make_shared<TextButton>(assets, sf::Vector2f(200, 100), sf::Vector2f(300, 360), sf::Color::Red, "Exit");
 }
 
 void MenuState::draw(const float& dt) {
     (void) dt;
 
-    for (const auto& button : buttons) {
-        window->draw(*button);
-    }
+    window->draw(*play);
+    window->draw(*quit);
 
 }
 
@@ -23,9 +19,15 @@ void MenuState::handleInput() {
     while (window->pollEvent(event)) {
         if (event.type == sf::Event::Closed) window->close();
         if (event.type == sf::Event::MouseButtonPressed) {
-            for (const auto& button : buttons) {
-                if (button->withinBounds(sf::Mouse::getPosition(*window))) {}
+            auto mouse = sf::Mouse::getPosition(*window);
+
+            if (play->withinBounds(mouse)) {
+                // Create and change to game state
+            } else if (quit->withinBounds(mouse)) {
+                // Quit game
+                manager->removeState();
             }
+
         }
     }
 

@@ -5,8 +5,7 @@
 #include <SFML/Graphics.hpp>
 
 #include "AssetManager.hpp"
-
-class StateManager;
+#include "StateManager.hpp"
 
 class State {
 public:

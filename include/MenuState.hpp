@@ -13,7 +13,8 @@ public:
     void handleInput() final override;
     void update(const float&) final override;
 protected:
-    std::vector<std::shared_ptr<Button>> buttons;
+    std::shared_ptr<TextButton> play;
+    std::shared_ptr<TextButton> quit;
 };
 
 #endif /* MENU_STATE_HPP */
