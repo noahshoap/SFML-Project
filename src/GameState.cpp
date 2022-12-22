@@ -1,12 +1,19 @@
 #include "GameState.hpp"
 
 GameState::GameState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetManager> a, std::shared_ptr<StateManager> sm) : State(w, a, sm) {
+    // Need to load in the grass texture.
+    auto grass_texture = assets->loadTexture("Grass.png");
+    grass_texture->setRepeated(true);
 
+    grass = std::make_unique<sf::RectangleShape>(sf::Vector2f(800, 600));
+    grass->setTexture(grass_texture.get());
+    grass->setPosition(sf::Vector2f(0, 0));
 }
 
 void GameState::draw(const float& dt) {
     (void) dt;
 
+    window->draw(*grass);
 }
 
 void GameState::handleInput() {
