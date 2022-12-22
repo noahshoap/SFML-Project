@@ -13,6 +13,7 @@ public:
     void handleInput() final override;
     void update(const float&) final override;
 protected:
+    std::unique_ptr<sf::RectangleShape> grass;
 };
 
 #endif /* GAME_STATE_HPP */
