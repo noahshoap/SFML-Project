@@ -17,7 +17,7 @@ public:
     Game();
     void run();
 protected:
-    StateManager state_manager;
+    std::shared_ptr<StateManager> state_manager;
     std::shared_ptr<sf::RenderWindow> window;
     std::shared_ptr<AssetManager> assets;
     unsigned int width;

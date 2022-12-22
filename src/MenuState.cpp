@@ -1,6 +1,6 @@
 #include "MenuState.hpp"
 
-MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetManager> a) : State(w, a) {
+MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetManager> a, std::shared_ptr<StateManager> sm) : State(w, a, sm) {
     auto button = std::make_shared<TextButton>(assets, sf::Vector2f(200, 100), sf::Vector2f(300, 250), sf::Color::Green, "Play");
     auto exit_button = std::make_shared<TextButton>(assets, sf::Vector2f(200, 100), sf::Vector2f(300, 360), sf::Color::Red, "Exit");
 

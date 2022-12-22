@@ -6,9 +6,11 @@
 
 #include "AssetManager.hpp"
 
+class StateManager;
+
 class State {
 public:
-    State(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetManager> a) : window(w), assets(a) { }
+    State(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetManager> a, std::shared_ptr<StateManager> sm) : window(w), assets(a), manager(sm) { }
     virtual ~State() {
     }
     virtual void draw(const float&) = 0;
@@ -17,6 +19,7 @@ public:
 protected:
     std::shared_ptr<sf::RenderWindow> window;
     std::shared_ptr<AssetManager> assets;
+    std::shared_ptr<StateManager> manager;
 };
 
 #endif /* STATE_HPP */
