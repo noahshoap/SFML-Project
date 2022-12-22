@@ -23,6 +23,7 @@ void MenuState::handleInput() {
 
             if (play->withinBounds(mouse)) {
                 // Create and change to game state
+                manager->replaceState(std::make_unique<GameState>(window, assets, manager));
             } else if (quit->withinBounds(mouse)) {
                 // Quit game
                 manager->removeState();

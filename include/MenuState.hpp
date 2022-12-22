@@ -2,6 +2,7 @@
 #define MENU_STATE_HPP
 
 #include "State.hpp"
+#include "GameState.hpp"
 #include "TextButton.hpp"
 #include <vector>
 
