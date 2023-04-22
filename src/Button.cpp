@@ -29,6 +29,9 @@ bool Button::withinBounds(const sf::Vector2i& mouse) {
     auto position = background.getPosition();
     auto size = background.getSize();
 
+    // This could be optimized.
+    // TODO: Look into using getGlobalBounds() or getLocalBounds() rather than implementing manual logic.
+
     auto position_max = position;
     position_max.x += size.x;
     position_max.y += size.y;

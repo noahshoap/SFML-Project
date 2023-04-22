@@ -2,7 +2,7 @@
 #define ASSET_MANAGER_HPP
 
 // STL Includes
-#include <map>
+#include <unordered_map>
 #include <memory>
 #include <string>
 #include <stdexcept>
@@ -31,9 +31,9 @@ public:
     void removeSoundBuffer(const std::string&);
 
 private:
-    std::map<std::string, std::shared_ptr<sf::Texture>> textures;
-    std::map<std::string, std::shared_ptr<sf::Font>> fonts;
-    std::map<std::string, std::shared_ptr<sf::SoundBuffer>> sounds;
+    std::unordered_map<std::string, std::shared_ptr<sf::Texture>> textures;
+    std::unordered_map<std::string, std::shared_ptr<sf::Font>> fonts;
+    std::unordered_map<std::string, std::shared_ptr<sf::SoundBuffer>> sounds;
 
     /* Paths to look for files in */
     std::string texture_path;
