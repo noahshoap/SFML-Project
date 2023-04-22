@@ -7,7 +7,7 @@ MenuState::MenuState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetM
 
 void MenuState::draw(const float& dt) {
     (void) dt;
-
+    window->clear();
     window->draw(*play);
     window->draw(*quit);
 
@@ -23,7 +23,7 @@ void MenuState::handleInput() {
 
             if (play->withinBounds(mouse)) {
                 // Create and change to game state
-                manager->replaceState(std::make_unique<GameState>(window, assets, manager));
+                manager->addState(std::make_unique<GameState>(window, assets, manager));
             } else if (quit->withinBounds(mouse)) {
                 // Quit game
                 manager->removeState();

@@ -23,3 +23,7 @@ void StateManager::replaceState(std::shared_ptr<State> state) {
 bool StateManager::empty() {
     return states.empty();
 }
+
+size_t StateManager::getStateCount() {
+    return states.size();
+}

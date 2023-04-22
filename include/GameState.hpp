@@ -5,6 +5,8 @@
 #include "TextButton.hpp"
 #include <vector>
 
+#include "PauseState.hpp"
+
 class GameState : public State {
 public:
     GameState( std::shared_ptr<sf::RenderWindow>, std::shared_ptr<AssetManager>, std::shared_ptr<StateManager>);

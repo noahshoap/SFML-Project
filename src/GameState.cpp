@@ -12,7 +12,7 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetM
 
 void GameState::draw(const float& dt) {
     (void) dt;
-
+    window->clear(sf::Color::Black);
     window->draw(*grass);
 }
 
@@ -21,8 +21,11 @@ void GameState::handleInput() {
 
     while (window->pollEvent(event)) {
         if (event.type == sf::Event::Closed) window->close();
-        if (event.type == sf::Event::MouseButtonPressed) {
+        else if (event.type == sf::Event::MouseButtonPressed) {
         //    auto mouse = sf::Mouse::getPosition(*window);
+        } else if (event.type == sf::Event::KeyPressed) {
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+                manager->addState(std::make_unique<PauseState>(window, assets, manager));
         }
     }
 

@@ -20,7 +20,6 @@ void Game::run() {
         if (state_manager->empty()) break;
         auto state = state_manager->getState();
 
-        window->clear(sf::Color::Black);
         state->handleInput();
         state->update(1);
         state->draw(1);

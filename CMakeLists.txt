@@ -22,6 +22,7 @@ add_executable(game
     src/AssetManager.cpp
     src/Button.cpp
     src/TextButton.cpp
+    src/PauseState.cpp
     src/GameState.cpp
     src/MenuState.cpp
     src/StateManager.cpp

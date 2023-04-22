@@ -13,6 +13,7 @@ public:
     void removeState();
     void replaceState(std::shared_ptr<State>);
     bool empty();
+    size_t getStateCount();
 private:
     std::stack<std::shared_ptr<State>> states;
 };
