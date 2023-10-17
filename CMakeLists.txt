@@ -14,7 +14,7 @@ set(EXECUTABLE_OUTPUT_PATH "bin")
 include_directories("./include")
 
 # Find SFML
-find_package(SFML 2.5 COMPONENTS
+find_package(SFML 2.6 COMPONENTS
     system window graphics network audio REQUIRED)
 
 # Create game executable
