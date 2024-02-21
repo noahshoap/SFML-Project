@@ -26,6 +26,8 @@ FetchContent_MakeAvailable(json)
 # Create game executable
 add_executable(game
     src/Tile.cpp
+    src/TileMap.cpp
+    src/WorldLevel.cpp
     src/AssetManager.cpp
     src/Button.cpp
     src/TextButton.cpp
