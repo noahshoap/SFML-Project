@@ -17,8 +17,15 @@ include_directories("./include")
 find_package(SFML 2.6 COMPONENTS
     system window graphics network audio REQUIRED)
 
+# Fetch Nlohmann JSON
+
+include(FetchContent)
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz)
+FetchContent_MakeAvailable(json)
+
 # Create game executable
 add_executable(game
+    src/Tile.cpp
     src/AssetManager.cpp
     src/Button.cpp
     src/TextButton.cpp
@@ -30,5 +37,6 @@ add_executable(game
     src/main.cpp
 )
 
+# Link Nhlomann JSON to executable
 # Link SFML to executable
-target_link_libraries(game sfml-graphics sfml-window sfml-audio)
+target_link_libraries(game sfml-graphics sfml-window sfml-audio nlohmann_json::nlohmann_json)

@@ -1,10 +1,11 @@
 #include "AssetManager.hpp"
 
-AssetManager::AssetManager(const std::string& tex_path, const std::string& font_path, const std::string& sound_path)
+AssetManager::AssetManager(const std::string& tex_path, const std::string& font_path, const std::string& sound_path, const std::string& tile_path)
 : texture_path(tex_path)
 {
     this->font_path = font_path;
     this->sound_path = sound_path;
+    this->tile_path = tile_path;
 }
 
 /* Methods to get an already loaded asset */
@@ -38,6 +39,16 @@ std::shared_ptr<sf::SoundBuffer> AssetManager::getSoundBuffer(const std::string&
     return map_rv->second;
 }
 
+
+std::shared_ptr<Tile> AssetManager::getTile(const std::string& tile_name) {
+    auto map_rv = tiles.find(tile_name);
+
+    if (map_rv == tiles.end()) {
+        throw std::invalid_argument("Could not find tile with name " + tile_name);
+    }
+
+    return map_rv->second;
+}
 
 /* Methods that load an asset if it's unloaded */
 std::shared_ptr<sf::Texture> AssetManager::loadTexture(const std::string& tex_name) {
@@ -91,6 +102,27 @@ std::shared_ptr<sf::SoundBuffer> AssetManager::loadSoundBuffer(const std::string
     return sound;
 }
 
+std::shared_ptr<Tile> AssetManager::loadTile(const std::string& tile_name) {
+    auto map_rv = tiles.find(tile_name);
+
+    // Tile has already been loaded, return it.
+    if (map_rv != tiles.end()) return map_rv->second;
+
+    // Otherwise, create new tile from JSON.
+
+    std::ifstream tileFile(tile_path + tile_name);
+    json data = json::parse(tileFile);
+
+    auto tile = std::make_shared<Tile>(data);
+    tile->texture = loadTexture(data["Texture"]);
+
+    std::cout << tile->name << std::endl;
+
+    tiles[tile_name] = tile;
+
+    return tile;
+}
+
 
 /* Methods that remove an existing asset */
 void AssetManager::removeTexture(const std::string& tex_name) {
@@ -113,10 +145,19 @@ void AssetManager::removeFont(const std::string& font_name) {
 }
 
 void AssetManager::removeSoundBuffer(const std::string& sound_name) {
-    auto map_rv =  sounds.find(sound_name);
+    auto map_rv = sounds.find(sound_name);
 
     // Nothing to erase sound doesn't exist.
     if (map_rv == sounds.end()) return;
 
     sounds.erase(map_rv);
+}
+
+void AssetManager::removeTile(const std::string& tile_name) {
+    auto map_rv = tiles.find(tile_name);
+
+    // Nothing to erase, tile does not exist.
+    if (map_rv == tiles.end()) return;
+
+    tiles.erase(map_rv);
 }

@@ -5,6 +5,8 @@ GameState::GameState(std::shared_ptr<sf::RenderWindow> w, std::shared_ptr<AssetM
     auto grass_texture = assets->loadTexture("Grass.png");
     grass_texture->setRepeated(true);
 
+    auto grass_tile = assets->loadTile("Grass.json");
+
     grass = std::make_unique<sf::RectangleShape>(sf::Vector2f(800, 600));
     grass->setTexture(grass_texture.get());
     grass->setPosition(sf::Vector2f(0, 0));
@@ -33,7 +35,6 @@ void GameState::handleInput() {
 
 void GameState::update(const float& dt) {
     (void) dt;
-    std::cout << "I am the game state.  Aren't I cool and fun?" << std::endl;
 }
 
 GameState::~GameState() {

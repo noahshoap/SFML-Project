@@ -1,6 +1,7 @@
 #include "Tile.hpp"
 
-Tile::Tile(std::shared_ptr<sf::Texture> text) : texture(text)
+Tile::Tile(json& data)
 {
-
+    isCollidable = data["isCollidable"];
+    name = data["Name"];
 }

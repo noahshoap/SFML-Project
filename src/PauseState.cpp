@@ -40,7 +40,6 @@ void PauseState::handleInput() {
 
 void PauseState::update(const float& dt) {
     (void) dt;
-    std::cout << "I'm the pause state, and I'm really boring.  Let's resume the game!" << std::endl;
 }
 
 PauseState::~PauseState() {

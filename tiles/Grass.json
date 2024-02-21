@@ -1,0 +1,5 @@
+{
+    "Name": "Grass",
+    "Texture": "Grass.png",
+    "isCollidable": false
+}
